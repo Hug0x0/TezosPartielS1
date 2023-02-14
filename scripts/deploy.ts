@@ -1,5 +1,6 @@
 import { InMemorySigner } from "@taquito/signer";
-import { TezosToolkit } from "@taquito/taquito";
+import { MichelsonMap, TezosToolkit } from "@taquito/taquito";
+import contract from "../src/compiled/contract.json";
 import dotenv from "dotenv";
 import path from "path";
 
@@ -18,18 +19,24 @@ const deploy = async () => {
         const admin: string = await signer.publicKeyHash();
         Tezos.setProvider({ signer });
 
-        const storage = 0;
-
-        const op = await Tezos.contract.originate({
-            code: contract,
-            storage: storage,
-        });
-        await op.confirmation();
-        console.log(`[OK] Token FA2: ${op.contractAddress}`);
-        // check contract storage with CLI
-        console.log(
-            `tezos-client --endpoint http://localhost:20000 get contract storage for ${op.contractAddress}`
-        );
+        async function deploy() {
+            const storage = {
+                user_map: new MichelsonMap(),
+                user_blacklist: [],
+                admin_list: new MichelsonMap(),
+                has_paid: new MichelsonMap(),
+            };
+            const op = await Tezos.contract.originate({
+                code: contract,
+                storage: storage,
+            });
+            await op.confirmation();
+            console.log(`[OK] Token FA2: ${op.contractAddress}`);
+            // check contract storage with CLI
+            console.log(
+                `get contract storage for ${op.contractAddress}`
+            );
+        }
     } catch (e) {
         console.log(e);
     }
