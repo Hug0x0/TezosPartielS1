@@ -21,7 +21,7 @@ const deploy = async () => {
         const storage = 0;
 
         const op = await Tezos.contract.originate({
-            code: code_contract_1,
+            code: contract,
             storage: storage,
         });
         await op.confirmation();
