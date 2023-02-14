@@ -1,0 +1,31 @@
+{
+  "name": "TezosPartielS1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hug0x0/TezosPartielS1"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hug0x0/TezosPartielS1/issues"
+  },
+  "homepage": "https://github.com/Hug0x0/TezosPartielS1#readme",
+  "dependencies": {
+    "@taquito/signer": "^15.0.0",
+    "@taquito/taquito": "^15.0.0",
+    "@taquito/utils": "^15.0.0",
+    "dotenv": "^16.0.3",
+    "path": "^0.12.7",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  }
+}

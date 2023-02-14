@@ -1,0 +1,8 @@
+version: '3'
+services:
+  flextesa:
+    image: tqtezos/flextesa:2021-03-18
+    command: start
+    ports:
+      - "20000:20000"
+    restart: always
